@@ -1,0 +1,59 @@
+{% extends 'base/base.html'%}
+
+{% block title %}
+    Student Details
+{% endblock%}
+
+{% block content %}
+<div class="p-5">
+    <h1>{{ patient.first_name }} {{ patient.last_name }} {{ patient.middle_name}}</h1>
+    <p>Student Number: {{ patient.student_number }}</p>
+    <p>Date of Birth: </p>
+    <p>Student Contact: {{ patient.patient_contact }}</p>
+    <p>Guardian: {{ patient.guardian }}</p>
+    <p>Guardian Contact: {{ patient.guardian_telephone}}</p>
+    <p>Address: {{ patient.patient_address }}</p> 
+    <hr>
+    <h2>STUDENT BACKGROUND HEALTH HISTORY</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ILLNESS</th>
+          <th scope="col">PAST</th>
+          <th scope="col">PRESENT</th>
+        </tr>
+      </thead>
+      {% for i in illness_obj %}
+        <tbody>
+          <tr>
+            <td>{{i.illness_name}}</td>
+            <td>{{i.past}}</td>
+            <td>{{i.present}}</td>
+            <td>
+              <form method="POST">
+                {% csrf_token %}
+              <input class="btn btn-danger" type="submit" name="{{i.id}}" value="Delete">
+            </form></td>
+          </tr>
+        </tbody>
+      
+      {% endfor %}
+      <form method="POST">
+        {% csrf_token %}
+        <tbody>
+          <tr>
+            <td><input type="text" class="form-control" name="illness"></td>
+            <td><input type="text" class="form-control" name="past"></td>
+            <td><input type="text" class="form-control" name="present"></td>
+            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+          </tr>
+      </tbody>
+      </form>
+    </table>
+    <hr>
+    <div>
+      <a href="{% url 'patient-diagnosis' patient.id %}" class="link-primary">Diagnosis</a>
+    </div>
+</div>
+
+{% endblock %}

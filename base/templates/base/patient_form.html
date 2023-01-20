@@ -1,0 +1,15 @@
+{% extends 'base/base.html'%}
+
+
+{% block content %}
+    <div class="w-50 m-5">
+        <h1>Add New Student Form</h1>
+      <form method="POST">
+      {% csrf_token %}
+          {% for field in form %}
+            <label>{{ field.label }}</label>
+            <div>{{ field }}</div>
+          {% endfor %}
+          <input type="submit" name="Submit" class="btn btn-success mt-2 text-center">
+    </div>
+{% endblock%}
