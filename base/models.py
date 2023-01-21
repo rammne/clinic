@@ -34,8 +34,8 @@ class Illness(models.Model):
     def get_absolute_url(self):
         return reverse('patient-details', kwargs={'pk' : self.pk})
 
-class PatientDiagnostic(models.Model):
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name="diagnosis")
+class PatientData(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name="data")
     height = models.DecimalField(null=True, blank=True, max_digits=4, decimal_places=1, verbose_name="Height (cm)")
     weight = models.DecimalField(null=True, blank=True, max_digits=4, decimal_places=1, verbose_name="Weight (kg)")
     eyes = models.CharField(null=True, blank=True, max_length=20, verbose_name="Eyes")
@@ -68,3 +68,15 @@ class PatientDiagnostic(models.Model):
     )
 
     code_of_rating = models.CharField(choices=RATING, default=SATISFACTION, verbose_name="Code of Rating", max_length=1)
+
+
+class VisitorsLogs(models.Model):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    student_number = models.CharField(max_length=20)
+    year_or_level = models.CharField(max_length=20)
+    program = models.CharField(max_length=20, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name

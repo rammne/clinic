@@ -1,6 +1,6 @@
-from .models import Patient, PatientDiagnostic
+from .models import Patient, VisitorsLogs
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PatientForm
+from .forms import PatientForm, VisitorsLogsForm
 from django.urls import reverse
 from django.db.models import Q
 from django.http import HttpResponseRedirect
@@ -39,6 +39,7 @@ def patient_form_update(request, pk):
 def patient_details(request, pk):
     patient = get_object_or_404(Patient, id=pk)
     illness_obj = patient.illness.all()
+    logs = VisitorsLogs.objects.filter(first_name='Rammne', last_name='Tiongson').first()
 
     if request.method == 'POST':
         if request.POST.get('illness'):
@@ -50,7 +51,7 @@ def patient_details(request, pk):
         if request.POST[delete_obj[1]] == 'Delete':
             patient.illness.filter(pk=delete_obj[1]).delete()
             
-    return render(request, 'base/patient_details.html', {'patient':patient, 'illness_obj':illness_obj})
+    return render(request, 'base/patient_details.html', {'patient':patient, 'illness_obj':illness_obj, 'logs':logs})
 
 def delete_patient(request, pk):
 
@@ -60,17 +61,37 @@ def delete_patient(request, pk):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-def patient_diagnosis(request, pk):
+def patient_data(request, pk):
     patient = get_object_or_404(Patient, id=pk)
-    patient_diagnosis = patient.diagnosis.all()
+    patient_data = patient.data.all()
 
-    if not patient_diagnosis:
-        patient.diagnosis.create(height=1.0)
-        return redirect(reverse('patient-diagnosis', args=[patient.pk]))
+    if not patient_data:
+        patient.data.create(height=1.0)
+        return redirect(reverse('patient-data', args=[patient.pk]))
 
     if request.method == 'POST':
-            patient.diagnosis.update_or_create(patient=patient.id, defaults={list(request.POST)[1]:request.POST[list(request.POST)[1]]})
-            return redirect(reverse('patient-diagnosis', args=[patient.pk]))
-    context = {'patient': patient, 'patient_diagnosis':patient_diagnosis}
+            patient.data.update_or_create(patient=patient.id, defaults={list(request.POST)[1]:request.POST[list(request.POST)[1]]})
+            return redirect(reverse('patient-data', args=[patient.pk]))
+    context = {'patient': patient, 'patient_data':patient_data}
 
-    return render(request, 'base/patient_diagnosis.html', context)
+    return render(request, 'base/patient_data.html', context)
+
+def patient_logs(request):
+    obj = VisitorsLogs.objects.all()
+    form = VisitorsLogsForm()
+
+    if request.method == 'POST':
+        form = VisitorsLogsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('patient-logs')
+        else:
+            form = VisitorsLogsForm()
+
+        if request.POST.get('delete'):
+            obj_id = request.POST.get('delete')
+            VisitorsLogs.objects.get(id=obj_id).delete()
+
+    context = {'obj':obj, 'form':form}
+
+    return render(request, 'base/patient_logs.html', context)

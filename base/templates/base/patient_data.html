@@ -6,7 +6,7 @@
     <table class="table rounded">
         <tr >
             <td class="bg-warning rounded">
-                <h4>Student Diagnosis</h4>
+                <h4>Patient Data</h4>
             </td>
         </tr>
         <tr>
@@ -18,11 +18,11 @@
                         <th scope="col">Description</th>
                     </tr>
                     </thead>
-                    {% for diagnosis in patient_diagnosis %}
+                    {% for data in patient_data %}
                     <tbody>
                     <tr>
                         <th>Height</th>
-                        <td>{{diagnosis.height}}</td>
+                        <td>{{data.height}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Edit
@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <th>Weight</th>
-                        <td>{{diagnosis.weight}}</td>
+                        <td>{{data.weight}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
                                 Edit
@@ -66,7 +66,7 @@
                     </tr>
                     <tr>
                         <th>Eyes</th>
-                        <td>{{diagnosis.eyes}}</td>
+                        <td>{{data.eyes}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
                                 Edit
@@ -88,7 +88,7 @@
                     </tr>
                     <tr>
                         <th>Right Vision</th>
-                        <td>{{diagnosis.r_vision}}</td>
+                        <td>{{data.r_vision}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
                                 Edit
@@ -110,7 +110,7 @@
                     </tr>
                     <tr>
                         <th>Left Vision</th>
-                        <td>{{diagnosis.l_vision}}</td>
+                        <td>{{data.l_vision}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
                                 Edit
@@ -132,7 +132,7 @@
                     </tr>
                     <tr>
                         <th>Ears</th>
-                        <td>{{diagnosis.ears}}</td>
+                        <td>{{data.ears}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
                                 Edit
@@ -154,7 +154,7 @@
                     </tr>
                     <tr>
                         <th>Nose</th>
-                        <td>{{diagnosis.nose}}</td>
+                        <td>{{data.nose}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">
                                 Edit
@@ -176,7 +176,7 @@
                     </tr>
                     <tr>
                         <th>Throat</th>
-                        <td>{{diagnosis.throat}}</td>
+                        <td>{{data.throat}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">
                                 Edit
@@ -198,7 +198,7 @@
                     </tr>
                     <tr>
                         <th>Mouth</th>
-                        <td>{{diagnosis.mouth}}</td>
+                        <td>{{data.mouth}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop8">
                                 Edit
@@ -220,7 +220,7 @@
                     </tr>
                     <tr>
                         <th>Neck</th>
-                        <td>{{diagnosis.neck}}</td>
+                        <td>{{data.neck}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop9">
                                 Edit
@@ -242,7 +242,7 @@
                     </tr>
                     <tr>
                         <th>Extremities</th>
-                        <td>{{diagnosis.extremities}}</td>
+                        <td>{{data.extremities}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop10">
                                 Edit
@@ -264,7 +264,7 @@
                     </tr>
                     <tr>
                         <th>Heart Auscultation</th>
-                        <td>{{diagnosis.heart_auscultation}}</td>
+                        <td>{{data.heart_auscultation}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop11">
                                 Edit
@@ -286,7 +286,7 @@
                     </tr>
                     <tr>
                         <th>Lung Auscultation</th>
-                        <td>{{diagnosis.lung_auscultation}}</td>
+                        <td>{{data.lung_auscultation}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop13">
                                 Edit
@@ -308,7 +308,7 @@
                     </tr>
                     <tr>
                         <th>Skin</th>
-                        <td>{{diagnosis.skin}}</td>
+                        <td>{{data.skin}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop15">
                                 Edit
@@ -330,7 +330,7 @@
                     </tr>
                     <tr>
                         <th>Nails</th>
-                        <td>{{diagnosis.nails}}</td>
+                        <td>{{data.nails}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop16">
                                 Edit
@@ -352,7 +352,7 @@
                     </tr>
                     <tr>
                         <th>Head</th>
-                        <td>{{diagnosis.head}}</td>
+                        <td>{{data.head}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop17">
                                 Edit
@@ -374,7 +374,7 @@
                     </tr>
                     <tr>
                         <th>Personal Hygiene</th>
-                        <td>{{diagnosis.personal_hygiene}}</td>
+                        <td>{{data.personal_hygiene}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop18">
                                 Edit
@@ -396,7 +396,7 @@
                     </tr>
                     <tr>
                         <th>General Health</th>
-                        <td>{{diagnosis.general_health}}</td>
+                        <td>{{data.general_health}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop19">
                                 Edit
@@ -418,7 +418,7 @@
                     </tr>
                     <tr>
                         <th>Other Remarks</th>
-                        <td>{{diagnosis.other_remarks}}</td>
+                        <td>{{data.other_remarks}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop20">
                                 Edit
@@ -440,7 +440,7 @@
                     </tr>
                     <tr>
                         <th>Name of Physician</th>
-                        <td>{{diagnosis.name_of_physician}}</td>
+                        <td>{{data.name_of_physician}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop21">
                                 Edit
@@ -462,7 +462,7 @@
                     </tr>
                     <tr>
                         <th>Code of Rating</th>
-                        <td>{{diagnosis.code_of_rating}}</td>
+                        <td>{{data.code_of_rating}}</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop22">
                                 Edit
@@ -475,10 +475,15 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST">{% csrf_token %}       <select name="course" id="course" class="form-control">
-                                        <option value="X">X</option>
-                                        <option value="O">O</option>
-                                      </select></form>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <select class="form-select" aria-label="Default select example" name="code_of_rating">
+                                        <option selected>Rating</option>
+                                        <option value="O">Satisfaction</option>
+                                        <option value="X">Requires attention</option>
+                                        <option value="P">Parents notified</option>
+                                      </select>
+                                    <input class="btn btn-info mt-3" type="submit" name="submit" value="Save"></form>
                                 </div>
                                 </div>
                             </div>

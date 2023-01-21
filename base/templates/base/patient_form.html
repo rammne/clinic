@@ -22,7 +22,7 @@
           <form method="POST">
           {% csrf_token %}
               {% for field in form %}
-                <label class="text text-primary"><h5>{{ field.label }} </h5></label>
+                <label class="text text-primary"><h5> {{ field.label }} </h5></label>
                 <div>{{ field }}</div>
               {% endfor %}
         </div>
