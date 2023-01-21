@@ -2,14 +2,34 @@
 
 
 {% block content %}
-    <div class="w-50 m-5">
-        <h1>Add New Student Form</h1>
-      <form method="POST">
-      {% csrf_token %}
-          {% for field in form %}
-            <label>{{ field.label }}</label>
-            <div>{{ field }}</div>
-          {% endfor %}
-          <input type="submit" name="Submit" class="btn btn-success mt-2 text-center">
-    </div>
+<style>
+  input {
+    border-radius: 5px;
+    font-size: x-large;
+  }
+</style>
+<br>
+<div class="container">
+  <table class="table">
+    <tr>
+      <td class="table bg-warning rounded">
+        <h4>Student Form</h4>
+      </td>
+    </tr>
+    <tr>
+      <td class="table table-light rounded">    
+            <div>
+          <form method="POST">
+          {% csrf_token %}
+              {% for field in form %}
+                <label class="text text-primary"><h5>{{ field.label }} </h5></label>
+                <div>{{ field }}</div>
+              {% endfor %}
+        </div>
+    </td>
+    </tr>
+  </table>
+  <input type="submit" name="Submit" class="btn btn-success" >
+</form>
+</div>
 {% endblock%}
