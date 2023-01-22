@@ -41,7 +41,7 @@ def patient_form_update(request, pk):
 def patient_details(request, pk):
     patient = get_object_or_404(Patient, id=pk)
     illness_obj = patient.illness.all()
-    logs = VisitorsLogs.objects.filter(first_name='Rammne', last_name='Tiongson').first()
+    logs = VisitorsLogs.objects.filter(first_name=patient.first_name, last_name=patient.last_name).first()
 
     if request.method == 'POST':
         if request.POST.get('illness'):

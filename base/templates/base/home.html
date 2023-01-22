@@ -46,8 +46,8 @@
                     <tr>
                         <td>{{ patient.first_name }} {{patient.last_name}} </td>
                         <td>{{ patient.student_number }}</td>
-                        <td><a class="btn btn-sm btn-success" id="otp" onclick="otp()" href="{% url 'patient-details' patient.id %}">ENTER</a>
-                            <a onclick="return confirm('Are you sure you want to delete this?')"  class="btn btn-sm btn-danger"href="{% url 'delete-patient' patient.id %}">DELETE</a> 
+                        <td><a class="btn btn-sm btn-success"  href="{% url 'patient-details' patient.id %}">ENTER</a>
+                            <a class="btn btn-sm btn-danger"href="{% url 'delete-patient' patient.id %}">DELETE</a> 
                             <a class="btn btn-sm btn-warning" href="{% url 'patient-form-update' patient.id %}">EDIT</a></td>
                     </tr>
         {% endfor %}
@@ -57,20 +57,9 @@
         </td>
     </tr>
     </table>
-    {{user.password}}
     </div>
 
 <script>
-    function otp () {
-        z = prompt('ENTER PIN TO CONFIRM.')
-        if (z == "{{ user.password }}") {
-            alert("Success")
-        } else {
-            const a = document.querySelector('#otp');
-            a.href = "";
-        }
-    }
-
     function toggle(ID){
         var element = document.getElementById(ID);
         if(element.style.display === "none"){
