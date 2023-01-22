@@ -58,7 +58,7 @@
                         <form method="POST">
                             {% csrf_token %}
                         <tr>
-                            <td>{{form.first_name}} {{form.last_name}}</td>
+                            <td class="table">{{form.first_name}} {{form.last_name}}</td>
                             <td>{{form.student_number}}</td>
                             <td>{{form.year_or_level}}</td>
                             <td>{{form.program}}</td>
@@ -73,4 +73,12 @@
     </tr>
 </table>
     </div>
+
+<script>
+document.getElementById("id_first_name").placeholder = "First Name";
+document.getElementById("id_last_name").placeholder = "Last Name";
+document.getElementById("id_student_number").placeholder = "Student Number";
+document.getElementById("id_year_or_level").placeholder = "Year Level";
+document.getElementById("id_program").placeholder = "Program Name";    
+</script>
 {% endblock %}

@@ -1,0 +1,478 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        {% for diagnosis in patient_diagnosis %}
+        <tbody>
+        <tr>
+            <th>Height</th>
+            <td>{{diagnosis.height}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit - Height (cm)</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="height"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Weight</th>
+            <td>{{diagnosis.weight}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop1Label">Edit - Weight (kg)</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="weight"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Eyes</th>
+            <td>{{diagnosis.eyes}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop2Label">Edit - Eyes</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="eyes"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Right Vision</th>
+            <td>{{diagnosis.r_vision}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop3Label">Edit - Right Vision</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="r_vision"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Left Vision</th>
+            <td>{{diagnosis.l_vision}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop4Label">Edit - Left Vision</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="l_vision"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Ears</th>
+            <td>{{diagnosis.ears}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop5Label">Edit - Ears</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="ears"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Nose</th>
+            <td>{{diagnosis.nose}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop6Label">Edit - Nose</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="nose"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Throat</th>
+            <td>{{diagnosis.throat}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop7Label">Edit - Throat</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="throat"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Mouth</th>
+            <td>{{diagnosis.mouth}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop8">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop8" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop8Label">Edit - Mouth</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="mouth"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Neck</th>
+            <td>{{diagnosis.neck}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop9">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop9" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop9Label">Edit - Neck</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="neck"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Extremities</th>
+            <td>{{diagnosis.extremities}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop10">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop10" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop10Label">Edit - Extremities</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="extremities"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Heart Auscultation</th>
+            <td>{{diagnosis.heart_auscultation}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop11">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop11" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop12Label">Edit - Heart Auscultation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="heart_auscultation"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Lung Auscultation</th>
+            <td>{{diagnosis.lung_auscultation}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop13">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop13" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop14Label">Edit - Lung Auscultation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="lung_auscultation"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Skin</th>
+            <td>{{diagnosis.skin}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop15">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop15" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop15Label">Edit - Skin</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="skin"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Nails</th>
+            <td>{{diagnosis.nails}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop16">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop16" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop16Label">Edit - Nails</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="nails"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Head</th>
+            <td>{{diagnosis.head}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop17">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop17" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop17Label">Edit - Head</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="head"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Personal Hygiene</th>
+            <td>{{diagnosis.personal_hygiene}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop18">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop18" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop18Label">Edit - Personal Hygiene</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="personal_hygiene"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>General Health</th>
+            <td>{{diagnosis.general_health}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop19">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop19" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit - General Health</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="general_health"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Other Remarks</th>
+            <td>{{diagnosis.other_remarks}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop20">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop20" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop20Label">Edit - Other Remarks</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="other_remarks"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Name of Physician</th>
+            <td>{{diagnosis.name_of_physician}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop21">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop21" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop21Label">Edit - Name of Physician</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="name_of_physician"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Code of Rating</th>
+            <td>{{diagnosis.code_of_rating}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop22">
+                    Edit
+                </button>
+                <div class="modal fade" id="staticBackdrop22" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdrop22Label">Edit - Height (cm)</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">{% csrf_token %}<input class="form-control" type="text" name="code_of_rating"></form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% endblock content%}
