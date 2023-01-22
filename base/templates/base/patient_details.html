@@ -9,7 +9,7 @@
 <div class="container">
   <table class="table rounded">
     <tr>
-      <td class="bg-warning rounded"><h4>Patient Profile</h4></td>
+      <td class="bg-warning rounded"><h4>Patient Profile</h4><a href="#">Permissions</a> <a href="{% url 'patient-records' patient.id %}">Records</a></td>
     </tr>
     <tr>
       <td class="table table-light">
@@ -90,6 +90,7 @@
       </td>
     </tr>
   </table>
+  
 </div>
 <div class="container">
   <a href="{% url 'patient-data' patient.id %}" class="btn btn-info"><h4><svg xmlns="http://www.w3.org/2000/svg" width="30" height="27" fill="currentColor" class="bi bi-clipboard2-pulse-fill" viewBox="0 0 16 16">

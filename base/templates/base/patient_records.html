@@ -1,0 +1,59 @@
+{% extends 'base/base.html'%}
+
+{% block title %}
+    Student List
+{% endblock%}
+
+{% block content %}
+
+<div class="container mt-3">
+    <table class="table">
+    <tr>
+        <td class="bg-warning p-3 rounded">
+         <h4 class="text-dark" style="text-decoration: none;">Patient Records</h4>
+        </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="table-light">
+            <div id="hide">
+                <table class="table table-hover" >
+                    <thead>
+                        <tr>
+                            <th>Chief Complains</th>
+                            <th>Treatments/Medication</th>
+                            <th>Remarks</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in p_records %}
+                        <tr>
+                            <td>{{record.chief_complains}}</td>
+                            <td>{{record.treatments_medication}}</td>
+                            <td>{{record.remarks}}</td>
+                            <td>{{record.created_at}}</td>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <td><button class="btn btn-danger" name="delete" value="{{record.id}}">Delete</button></td>
+                            </form>
+                        </tr>
+                        {% endfor %}
+                        <form method="POST">
+                            {% csrf_token %}
+                        <tr>
+                            <td><textarea name="chief_complains" cols="30" rows="10"></textarea></td>
+                            <td><textarea name="treaments_medication" cols="30" rows="10"></textarea></td>
+                            <td><textarea name="remarks" cols="30" rows="10"></textarea></td>
+                            <td><input class="btn btn-primary" type="submit" name="submit"></td>
+                        </tr>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </td>
+    </tr>
+</table>
+    </div>
+{% endblock %}

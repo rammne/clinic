@@ -1,4 +1,4 @@
-from .models import Patient, VisitorsLogs
+from .models import Patient, VisitorsLogs, Record
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PatientForm, VisitorsLogsForm
 from django.urls import reverse
@@ -7,7 +7,9 @@ from django.http import HttpResponseRedirect
 
 def home(request):
     query = request.GET.get('q') if request.GET.get('q') != None else ''
-    patients = Patient.objects.filter(Q(first_name__icontains=query))
+    patients = Patient.objects.filter(  Q(first_name__icontains=query) |
+                                        Q(last_name__icontains=query) |
+                                        Q(student_number__icontains=query))
 
     return render(request, 'base/home.html', {'patients':patients})
 
@@ -77,7 +79,11 @@ def patient_data(request, pk):
     return render(request, 'base/patient_data.html', context)
 
 def patient_logs(request):
-    obj = VisitorsLogs.objects.all()
+
+    query = request.GET.get('q') if request.GET.get('q') != None else ''
+    obj = VisitorsLogs.objects.filter(  Q(first_name__icontains=query) |
+                                        Q(last_name__icontains=query) |
+                                        Q(student_number__icontains=query))
     form = VisitorsLogsForm()
 
     if request.method == 'POST':
@@ -95,3 +101,20 @@ def patient_logs(request):
     context = {'obj':obj, 'form':form}
 
     return render(request, 'base/patient_logs.html', context)
+
+def patient_records(request, pk):
+    patient = get_object_or_404(Patient, id=pk)
+    p_records = patient.records.all()
+
+    if request.method == 'POST' and not request.POST.get('delete'):
+        patient.records.create(chief_complains=request.POST.get('chief_complains'),
+                                treatments_medication=request.POST.get('treaments_medication'),
+                                remarks=request.POST.get('remarks'),)
+
+    if request.POST.get('delete'):
+        patient.records.get(id=request.POST.get('delete')).delete()
+        return redirect(reverse('patient-records', args=[patient.pk]))
+
+    context = {'p_records':p_records}
+
+    return render(request, 'base/patient_records.html', context)

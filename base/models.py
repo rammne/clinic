@@ -80,3 +80,16 @@ class VisitorsLogs(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+class Record(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='records')
+    chief_complains = models.CharField(max_length=50)
+    treatments_medication = models.CharField(max_length=50)
+    remarks = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.patient.first_name + ' ' + self.chief_complains
+
+    def get_absolute_url(self):
+        return reverse('patient-records', kwargs={'pk' : self.pk})
