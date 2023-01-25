@@ -45,7 +45,9 @@ def patient_details(request, pk):
 
     if request.method == 'POST':
         if request.POST.get('illness'):
-            patient.illness.create(illness_name=request.POST.get('illness'), past=request.POST.get('past'), present=request.POST.get('present'))
+            patient.illness.create( illness_name=request.POST.get('illness'),
+                                    past=request.POST.get('past'),
+                                    present=request.POST.get('present'))
             return redirect(reverse('patient-details', args=[patient.pk]))
 
         delete_obj = list(request.POST.keys())
@@ -84,6 +86,8 @@ def patient_logs(request):
     obj = VisitorsLogs.objects.filter(  Q(first_name__icontains=query) |
                                         Q(last_name__icontains=query) |
                                         Q(student_number__icontains=query))
+
+                                        
     form = VisitorsLogsForm()
 
     if request.method == 'POST':

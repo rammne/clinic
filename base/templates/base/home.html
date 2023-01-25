@@ -47,8 +47,8 @@
                         <td>{{ patient.first_name }} {{patient.last_name}} </td>
                         <td>{{ patient.student_number }}</td>
                         <td><a class="btn btn-sm btn-success"  href="{% url 'patient-details' patient.id %}">ENTER</a>
-                            <a class="btn btn-sm btn-danger"href="{% url 'delete-patient' patient.id %}">DELETE</a> 
-                            <a class="btn btn-sm btn-warning" href="{% url 'patient-form-update' patient.id %}">EDIT</a></td>
+                            <a class="btn btn-sm btn-danger"href="{% url 'delete-patient' patient.id %}">DELETE</a>
+                        </td>
                     </tr>
         {% endfor %}
                 </table>
