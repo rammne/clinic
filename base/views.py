@@ -4,6 +4,7 @@ from .forms import PatientForm, VisitorsLogsForm
 from django.urls import reverse
 from django.db.models import Q
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 def home(request):
     query = request.GET.get('q') if request.GET.get('q') != None else ''
@@ -18,9 +19,13 @@ def patient_form(request):
 
     if request.method == 'POST':
         form = PatientForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() & Patient.objects.filter(Q(first_name__icontains=form.cleaned_data['first_name']) & Q(last_name__icontains=form.cleaned_data['last_name'])).exists() == False:
             form.save()
+            messages.success(request, 'Patient Added!')
             return redirect('home')
+        else:
+            messages.error(request, 'Patient already exists!')
+                
     else:
         form = PatientForm()
 
