@@ -29,14 +29,13 @@
           <form method="POST">
           {% csrf_token %}
               {% for field in form %}
-                <label class="text text-dark"><h6> {{ field.label }}  </h6>{{ field }}</label>
+                <label class="text text-dark"><h6> {{ field.label }}</h6>{{ field }}</label>
               {% endfor %}
         </div>
     </td>
     </tr>
   </table>
   <input type="submit" name="Submit" class="btn btn-success" >
-  <a class="btn btn-primary" href="{{request.META.HTTP_REFERER}}">Back</a>
 </form>
 </div>
 {% endblock%}

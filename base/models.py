@@ -5,7 +5,20 @@ class Patient(models.Model):
     first_name = models.CharField(max_length=50, verbose_name="First name")
     last_name = models.CharField(max_length=50, verbose_name="Last name")
     middle_name = models.CharField(max_length=50, blank=True, verbose_name="Middle name")
+    grade_year_level = models.CharField(max_length=50, null=True, blank=True, verbose_name="Grade/Year Level")
+    section = models.CharField(max_length=50, null=True, blank=True, verbose_name="Section")
+
+    MALE = 'M'
+    FEMALE = 'F'
+
+    CHOICES = (
+        (MALE, 'Male'),
+        (FEMALE, 'Female')
+    )
+
+    sex = models.CharField(choices=CHOICES, default=MALE, max_length=1, verbose_name="Sex")
     student_number = models.CharField(max_length=10, default='00x-0000', verbose_name="Student Number")
+    age = models.CharField(max_length=20, null=True, verbose_name="Age")
     date_of_birth = models.CharField(max_length=50, verbose_name="Date of birth", null=True, blank=True)
     patient_address = models.CharField(max_length=100, verbose_name="Address")
     patient_contact = models.CharField(max_length=15, verbose_name="Telephone/Cellphone number", null=True, blank=True)
@@ -14,7 +27,11 @@ class Patient(models.Model):
     guardian_telephone = models.CharField(max_length=15, blank=True, verbose_name="Guardian's Telephone/Cellphone number")
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
+
     
+
+    
+
     def __str__(self):
         return self.first_name + " " + self.last_name + " " + self.middle_name
 
@@ -70,7 +87,22 @@ class PatientData(models.Model):
     code_of_rating = models.CharField(choices=RATING, default=SATISFACTION, verbose_name="Code of Rating", max_length=1)
 
 
-class VisitorsLogs(models.Model):
+class Record(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='records')
+    chief_complains = models.CharField(max_length=50)
+    action = models.CharField(max_length=100, null=True, blank=True)
+    treatments_medication = models.CharField(max_length=50, null=True, blank=True)
+    remarks = models.CharField(max_length=50, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.patient.first_name + ' ' + self.chief_complains
+
+    def get_absolute_url(self):
+        return reverse('patient-records', kwargs={'pk' : self.pk})
+
+
+'''class VisitorsLogs(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     student_number = models.CharField(max_length=20)
@@ -79,17 +111,4 @@ class VisitorsLogs(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
-
-class Record(models.Model):
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='records')
-    chief_complains = models.CharField(max_length=50)
-    treatments_medication = models.CharField(max_length=50)
-    remarks = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.patient.first_name + ' ' + self.chief_complains
-
-    def get_absolute_url(self):
-        return reverse('patient-records', kwargs={'pk' : self.pk})
+        return self.first_name + ' ' + self.last_name'''
