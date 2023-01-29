@@ -44,7 +44,54 @@ def patient_form_update(request, pk):
     return render(request, 'base/patient_form.html', context)
 
 def patient_details(request, pk):
-    r_form = RecordForm()
+    patient = get_object_or_404(Patient, id=pk)
+    p_records = patient.records.all()
+    illness_obj = patient.illness.all()
+    editing_record = False
+    editing_illness = False
+
+    if request.method == 'POST':
+        if 'illness' in request.POST:
+            patient.illness.create(illness_name=request.POST['illness'],
+                                   past=request.POST['past'],
+                                   present=request.POST['present'])
+            return redirect(reverse('patient-details', args=[patient.pk]))
+
+        if 'illness_update' in request.POST:
+            Illness.objects.filter(pk=request.POST['illness_update']).update(illness_name=request.POST['illness_update1'],
+                                                                            past=request.POST['past_update'],
+                                                                            present=request.POST['present_update'])
+            return redirect(reverse('patient-details', args=[patient.pk]))
+
+        if 'delete' in request.POST:
+            patient.illness.filter(pk=request.POST['delete']).delete()
+
+        if 'edit_record' in request.POST:
+            editing_record = True
+        if 'edit_illness' in request.POST:
+            editing_illness = True
+
+    if 'record_update' in request.POST:
+        Record.objects.filter(pk=request.POST['record_update']).update(patient=patient.id,
+                                                                      chief_complains=request.POST['chief_complains_update'],
+                                                                      action=request.POST['action_update'],
+                                                                      treatments_medication=request.POST['treaments_medication_update'],
+                                                                      remarks=request.POST['remarks_update'])
+
+    if 'record_submit' in request.POST:
+        patient.records.create(chief_complains=request.POST['chief_complains'],
+                               action=request.POST['action'],
+                               treatments_medication=request.POST['treaments_medication'],
+                               remarks=request.POST['remarks'])
+
+    if 'delete' in request.POST:
+        patient.records.get(id=request.POST['delete']).delete()
+        return redirect(reverse('patient-details', args=[patient.pk]))
+
+    return render(request, 'base/patient_details.html', {'patient': patient, 'illness_obj': illness_obj, 'p_records': p_records, 'editing_record': editing_record, 'editing_illness': editing_illness})
+
+
+'''def patient_details(request, pk): REFACTORED
     patient = get_object_or_404(Patient, id=pk)
     p_records = patient.records.all()
     illness_obj = patient.illness.all()
@@ -92,7 +139,8 @@ def patient_details(request, pk):
         patient.records.get(id=request.POST.get('delete')).delete()
         return redirect(reverse('patient-details', args=[patient.pk]))
             
-    return render(request, 'base/patient_details.html', {'patient':patient, 'illness_obj':illness_obj, 'p_records':p_records, 'editing_record':editing_record, 'editing_illness':editing_illness})
+    return render(request, 'base/patient_details.html', {'patient':patient, 'illness_obj':illness_obj, 'p_records':p_records, 'editing_record':editing_record, 'editing_illness':editing_illness})'''
+
 
 def delete_patient(request, pk):
 
