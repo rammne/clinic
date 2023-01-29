@@ -10,8 +10,10 @@
   <table class="table rounded">
     <tr>
       <td class="bg-warning rounded"><h4>Patient Profile</h4>
-        <a href="#">Permissions</a>
-        <a href="{% url 'patient-form-update' patient.id %}">Edit</a>
+        <h5>
+          <a href="#">Permissions</a>
+          <a href="{% url 'patient-form-update' patient.id %}">Edit</a>
+        </h5>
       </td>
     </tr>
     <tr>
@@ -39,10 +41,18 @@
         <form method="POST">
           {% csrf_token %}
         <h4>PATIENT BACKGROUND HEALTH HISTORY</h4>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          Add
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <h4><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+          </svg> Add</h4>
         </button>
-        <input class="btn btn-primary" type="submit" name="edit_illness" value="Edit">
+        <button type="submit" class="btn btn-warning" style="float: right;" name="edit_illness">
+          <h4>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+          </svg> Edit</h4>
+        </button>
       </form>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -57,6 +67,7 @@
                   <input type="text" class="form-control mt-2" name="illness" placeholder="ILLNESS">
                   <input type="text" class="form-control mt-2" name="past" placeholder="PAST">
                   <input type="text" class="form-control mt-2" name="present" placeholder="PRESENT">
+                  <br>
                   <input class="btn btn-primary" type="submit" name="illness_submit">
               </form>
             </div>
@@ -106,31 +117,45 @@
     </div>
       </td>
     </tr>
-    <div class="container mt-3">
+    <div class="container">
       <table class="table">
       <tr>
         <form method="POST">{% csrf_token %}
           <td class="bg-warning p-3 rounded">
            <h4 class="text-dark" style="text-decoration: none;">Patient Records</h4>
-           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
-            Add
+          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+            <h4><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+            </svg> Add</h4>
           </button>
-          <input class="btn btn-primary" type="submit" name="edit_record" value="Edit">
+          <button type="submit" class="btn btn-warning" style="float: right;" name="edit_record">
+            <h4>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg> Edit</h4>
+          </button>
         </form>
           <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop1Label" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
               <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdrop1Label">Edit</h1>
+                  <h1 class="modal-title fs-5" id="staticBackdrop1Label">Add</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                   <form method="POST">{% csrf_token %}
-                    <textarea class="rounded" name="chief_complains" cols="30" rows="2" placeholder="Chief Complains"></textarea>
-                    <textarea class="rounded" name="action" cols="30" rows="2" placeholder="Action"></textarea>
-                    <textarea class="rounded" name="treaments_medication" cols="30" rows="2" placeholder="Treatments/Medication"></textarea>
-                    <textarea class="rounded" name="remarks" cols="30" rows="2" placeholder="Remarks"></textarea>
-                    <input class="btn btn-primary" type="submit" name="record_submit">
+                    <table class="table table-hover">
+                      <tr>
+                        <td><textarea class="rounded" name="chief_complains" cols="25" rows="2" placeholder="Chief Complains"></textarea></td>
+                        <td><textarea class="rounded" name="action" cols="25" rows="2" placeholder="Action"></textarea></td>
+                      </tr>
+                      <tr>
+                        <td><textarea class="rounded" name="treaments_medication" cols="25" rows="2" placeholder="Treatments/Medication"></textarea></td>
+                        <td><textarea class="rounded" name="remarks" cols="25" rows="2" placeholder="Remarks"></textarea></td>
+                      </tr>
+                    </table>
+                    <input class="btn btn-primary float-center" type="submit" name="record_submit">
                 </form>
               </div>
               </div>
@@ -199,6 +224,7 @@
     </h4>
   </a>
 </div>
+<br>
 {% endblock %}
 
          

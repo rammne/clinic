@@ -67,11 +67,10 @@ def patient_details(request, pk):
 
         if request.POST[delete_illness[1]] == 'Delete':
             patient.illness.filter(pk=delete_illness[1]).delete()
-
         if 'edit_record' in request.POST:
             editing_record = True
         if 'edit_illness' in request.POST:
-            editing_illness = True
+            editing_illness =   True
 
     if 'record_update' in request.POST:
         Record.objects.filter(pk=request.POST['record_update']).update(patient=patient.id,
