@@ -63,8 +63,10 @@ def patient_details(request, pk):
                                                                             present=request.POST['present_update'])
             return redirect(reverse('patient-details', args=[patient.pk]))
 
-        if 'delete' in request.POST:
-            patient.illness.filter(pk=request.POST['delete']).delete()
+        delete_illness = list(request.POST.keys())
+
+        if request.POST[delete_illness[1]] == 'Delete':
+            patient.illness.filter(pk=delete_illness[1]).delete()
 
         if 'edit_record' in request.POST:
             editing_record = True
