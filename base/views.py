@@ -12,6 +12,12 @@ def home(request):
                                         Q(last_name__icontains=query) |
                                         Q(student_number__icontains=query))
 
+    if request.method == 'POST':
+        delete_obj = list(request.POST.keys())[1]
+        patient = Patient.objects.get(id=delete_obj)
+        patient.delete()
+        return redirect('home')
+
     return render(request, 'base/home.html', {'patients':patients})
 
 def patient_form(request):
@@ -143,13 +149,16 @@ def patient_details(request, pk):
     return render(request, 'base/patient_details.html', {'patient':patient, 'illness_obj':illness_obj, 'p_records':p_records, 'editing_record':editing_record, 'editing_illness':editing_illness})'''
 
 
-def delete_patient(request, pk):
+'''def delete_patient(request, pk):
 
     if request.META.get('HTTP_REFERER') == 'http://127.0.0.1:8000/':
         patient = get_object_or_404(Patient, id=pk)
         patient.delete()
 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    if request.method == 'POST':
+        print(request.POST)
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))'''
 
 def patient_data(request, pk):
     patient = get_object_or_404(Patient, id=pk)

@@ -52,7 +52,11 @@
                         <td>{{ patient.first_name }} {{patient.last_name}} </td>
                         <td>{{ patient.student_number }}</td>
                         <td><a class="btn btn-sm btn-success"  href="{% url 'patient-details' patient.id %}">ENTER</a>
-                            <a class="btn btn-sm btn-danger"href="{% url 'delete-patient' patient.id %}">DELETE</a>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input class="btn btn-danger" type="submit" name="{{patient.id}}" value="Delete">
+                            </form>
+                            
                         </td>
                     </tr>
         {% endfor %}
