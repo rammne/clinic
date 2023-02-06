@@ -51,10 +51,11 @@
                     <tr>
                         <td>{{ patient.first_name }} {{patient.last_name}} </td>
                         <td>{{ patient.student_number }}</td>
-                        <td><a class="btn btn-sm btn-success"  href="{% url 'patient-details' patient.id %}">ENTER</a>
-                            <form method="POST">
+                        <td class="">
+                            <form method="POST"  onSubmit="return confirm('Are you sure to delete? {{patient.first_name}} {{patient.last_name}}');">
+                                <a class="btn btn-sm btn-success"  href="{% url 'patient-details' patient.id %}">ENTER</a>  
                                 {% csrf_token %}
-                                <input class="btn btn-danger" type="submit" name="{{patient.id}}" value="Delete">
+                                <input class="btn btn-sm btn-danger" type="submit" name="{{patient.id}}" value="Delete">
                             </form>
                             
                         </td>
@@ -77,5 +78,14 @@
             element.style.display = "none";
         }
     }
-    </script>
+    function otp () {
+        z = prompt('ENTER PIN TO CONFIRM.')
+        if (z == "{{ user.password }}") {
+            alert("Success")
+        } else {
+            const a = document.querySelector('#otp');
+            a.href = "";
+        }
+    }
+</script>
 {% endblock %}
