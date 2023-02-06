@@ -23,7 +23,7 @@
 </div>
 
 <div class="container opacity-54">
-    <table class="table">
+    <table class="table rounded">
     <tr>
         <td class="bg-warning p-3 rounded">
          <a class="text-dark" onclick="toggle('hide')" style="text-decoration: none;"><h4>    
@@ -37,9 +37,9 @@
         </td>
     </tr>
     <tr>
-        <td class="table-light">
+        <td class="table-light rounded">
             <div id="hide">
-                <table class="table table-hover" >
+                <table class="table table-hover rounded" >
                     <thead>
                         <tr>
                             <th>STUDENT NAME</th>
@@ -55,7 +55,7 @@
                             <form method="POST"  onSubmit="return confirm('Are you sure to delete? {{patient.first_name}} {{patient.last_name}}');">
                                 <a class="btn btn-sm btn-success"  href="{% url 'patient-details' patient.id %}">ENTER</a>  
                                 {% csrf_token %}
-                                <input class="btn btn-sm btn-danger" type="submit" name="{{patient.id}}" value="Delete">
+                                <input class="btn btn-sm btn-danger" type="submit" name="{{patient.id}}" value="DELETE">
                             </form>
                             
                         </td>

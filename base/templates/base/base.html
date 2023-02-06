@@ -10,8 +10,8 @@
   <body style="background-image: url(static/bg.jpg); background-color: #0a095f;">  
 
     <div class="" style="background-color: #0a095f; color: white;">
-      <img class="container" src="{% static 'test.png' %}" alt="">
-      <h1 style="background-color: #184795; padding: 10px;">  
+      <a href="/"><img class="container" src="{% static 'test.png' %}" alt=""></a>
+      <h1 style="background-color: #184795; padding: 10px; display: none;">  
           <a href="{% url 'home' %}" class=" ms-2" style="text-decoration: none; color: white;"><div class="dropdown">
             <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list rounded ms-2" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
@@ -28,7 +28,7 @@
     {% endblock%}
     
     <footer>
-      <div class="container" style="background-color: #0a095f; color: #f1f1f1; position: relative;">
+      <div class="container rounded" style="background-color: #0a095f; color: #f1f1f1; position: relative;">
         Copyright 2023 by Our Lady of Perpetual Succor College | Gen. Ordoñez St. Concepcion Uno, Marikina City, 1807 Philippines. | OLOPSC Computer Science 2023.
       </div>
       <br>
