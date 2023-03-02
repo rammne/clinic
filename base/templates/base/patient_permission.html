@@ -1,0 +1,85 @@
+{% extends 'base/base.html'%}
+
+
+{% block content %}
+<style>
+  input {
+    border-radius: 5px;
+    font-size: large;
+  }
+</style>
+<br>
+<div class="container">
+  <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger">{{message}}</div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <table class="table">
+    <tr>
+      <td class="table bg-warning rounded">
+        <h4>Student Form</h4>
+      </td>
+    </tr>
+    <tr>
+      <td class="table table-light rounded">    
+          <form method="POST" class="table">
+          {% csrf_token %}
+          <div class="container">
+  <div class="row align-items-start">
+    <div class="col" >
+      <small> Treatments of sudden illness or injuries </small>
+      <label>{{patient_permission.c1}}</label>
+      <br>
+      <small class="h6"> Giving of initial medication for child's to the nearest hospital if emergency </small>
+      <label>{{patient_permission.c2}}</label>
+      <br>
+      <small> School authorities to take the child to the nearest hospital if emergency </small>
+      <label>{{patient_permission.c3}}</label>
+      <br>
+      <small> Treament / Proceedure is deemed necessarry </small>
+      <label>{{patient_permission.c4}}</label>
+      <br>
+      <label> Hospitals: </label>
+      <label>{{patient_permission.hospital}}</label>
+      <br>
+      <label> My child is allergic to (please specify): </label>
+      <label>{{patient_permission.allergy}}</label>
+      <br>
+      <label> Other remarks: </label>
+      <label>{{patient_permission.remarks}}</label>
+      <br>
+      <label> Parents name: </label>
+      <label> {{ patient_permission.parents_name }} </label>
+      <br>
+      <label> Date: </label>
+      <label> {{patient_permission.date_printed}} </label>
+
+    </div>
+    <div class="col">
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name of Vaccine</th>
+      <th scope="col">Date Given</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{patient_permission.vax}}</td>
+      <td>{{patient_permission.date_given}}</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+    </td>
+    </tr>
+  </table>
+  <a class="btn btn-primary" href="{% url 'patient-details' patient.id %}"></a>
+  <a class="btn btn-primary" href="{% url 'patient-permissions-form' patient.id %}">Edit</a>
+</form>
+</div>
+{% endblock%}

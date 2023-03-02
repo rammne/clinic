@@ -6,9 +6,9 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container shadow-lg">
     <form action="{{request.path}}" method="GET" class="text-center p-4">
-        <div style="display: flex; font-size: x-large;">
+        <div class="shadow-lg" style="display: flex; font-size: x-large;">
             <input type="text" class="form-control" name="q" placeholder="Search...">
             <button type="submit" class="btn btn-warning col-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -53,9 +53,9 @@
                         <td>{{ patient.student_number }}</td>
                         <td class="">
                             <form method="POST"  onSubmit="return confirm('Are you sure to delete? {{patient.first_name}} {{patient.last_name}}');">
-                                <a class="btn btn-sm btn-success"  href="{% url 'patient-details' patient.id %}">ENTER</a>  
+                                <a class="btn btn-sm btn-success shadow"  href="{% url 'patient-details' patient.id %}">ENTER</a>  
                                 {% csrf_token %}
-                                <input class="btn btn-sm btn-danger" type="submit" name="{{patient.id}}" value="DELETE">
+                                <input class="btn btn-sm btn-danger shadow" type="submit" name="{{patient.id}}" value="DELETE">
                             </form>
                             
                         </td>

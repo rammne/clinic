@@ -51,6 +51,9 @@ class Illness(models.Model):
     def get_absolute_url(self):
         return reverse('patient-details', kwargs={'pk' : self.pk})
 
+    class Meta:
+        verbose_name_plural = 'Illnesses'
+
 class PatientData(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name="data")
     height = models.DecimalField(null=True, blank=True, max_digits=4, decimal_places=1, verbose_name="Height (cm)")
@@ -112,3 +115,17 @@ class Record(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name'''
+
+class Permissions(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='permissions')
+    vax = models.CharField(max_length=50, null=True, blank=True)
+    date_given = models.CharField(max_length=20, null=True, blank=True)
+    c1 = models.BooleanField(default=False)
+    c2 = models.BooleanField(default=False)
+    c3 = models.BooleanField(default=False)
+    c4 = models.BooleanField(default=False)
+    hospital = models.CharField(max_length=50, null=True, blank=True)
+    allergy = models.CharField(max_length=50, null=True, blank=True)
+    remarks = models.CharField(max_length=50, null=True, blank=True)
+    parents_name = models.CharField(max_length=50, null=True, blank=True)
+    date_printed = models.CharField(max_length=20, null=True, blank=True)

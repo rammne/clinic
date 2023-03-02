@@ -5,12 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap" rel="stylesheet">
+
     <title> OLOPSC CLINIC | {% block title %} {% endblock %}</title>
 </head>
-  <body style="background-image: url(static/bg.jpg); background-color: #0a095f;">  
+  <body style="background-image: url(static/bg.jpg); background-color: #0a095f; font-family: 'League Spartan', sans-serif; font-size: larger">  
 
     <div class="" style="background-color: #0a095f; color: white;">
-      <a href="/"><img class="container" src="{% static 'test.png' %}" alt=""></a>
+      <a href="/"><img class="container" style="height: 100px;" src="{% static 'test.png' %}" alt=""></a>
       <h1 style="background-color: #184795; padding: 10px; display: none;">  
           <a href="{% url 'home' %}" class=" ms-2" style="text-decoration: none; color: white;"><div class="dropdown">
             <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list rounded ms-2" viewBox="0 0 16 16">
@@ -24,12 +28,15 @@
           </h1>
   </div>
 
+  
+
     {% block content %}
     {% endblock%}
     
     <footer>
       <div class="container rounded" style="background-color: #0a095f; color: #f1f1f1; position: relative;">
-        Copyright 2023 by Our Lady of Perpetual Succor College | Gen. Ordoñez St. Concepcion Uno, Marikina City, 1807 Philippines. | OLOPSC Computer Science 2023.
+        <h6>Copyright 2023 by Our Lady of Perpetual Succor College | Gen. Ordoñez St. Concepcion Uno, Marikina City, 1807 Philippines. | OLOPSC Computer Society 2023.
+        </h6>
       </div>
       <br>
     </footer>

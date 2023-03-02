@@ -11,7 +11,7 @@
     <tr>
       <td class="bg-warning rounded"><h4>Patient Profile</h4>
         <h5>
-          <a href="#">Permissions</a>
+          <!--<a href="{% url 'patient-permissions' patient.id %}">Permissions</a>-->
           <a href="{% url 'patient-form-update' patient.id %}">Edit</a>
         </h5>
       </td>
@@ -25,7 +25,7 @@
           <p>Section: {{patient.section}}</p>
           <p>Date of Birth: {{patient.date_of_birth}}</p>
           <p>Age: {{patient.age}}</p>
-          <p>Gender: {{patient.gender}}</p>
+          <p>Gender: {{patient.sex}}</p>
           <p>Patient Contact: {{ patient.patient_contact }}</p>
           <p>Guardian: {{ patient.guardian }}</p>
           <p>Guardian Contact: {{ patient.guardian_telephone}}</p>
@@ -123,7 +123,7 @@
       <table class="table">
       <tr>
         <form method="POST">{% csrf_token %}
-          <td class="bg-warning p-3 rounded">
+          <td class="bg-warning rounded">
            <h4 class="text-dark" style="text-decoration: none;">Patient Records</h4>
           <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
             <h4><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -149,12 +149,12 @@
                   <form method="POST">{% csrf_token %}
                     <table class="table table-hover">
                       <tr>
-                        <td><textarea class="rounded" name="chief_complains" cols="25" rows="2" placeholder="Chief Complains"></textarea></td>
-                        <td><textarea class="rounded" name="action" cols="25" rows="2" placeholder="Action"></textarea></td>
+                        <td><textarea class="rounded" name="chief_complains" cols="20" rows="2" placeholder="Chief Complains"></textarea></td>
+                        <td><textarea class="rounded" name="action" cols="20" rows="2" placeholder="Action"></textarea></td>
                       </tr>
                       <tr>
-                        <td><textarea class="rounded" name="treaments_medication" cols="25" rows="2" placeholder="Treatments/Medication"></textarea></td>
-                        <td><textarea class="rounded" name="remarks" cols="25" rows="2" placeholder="Remarks"></textarea></td>
+                        <td><textarea class="rounded" name="treaments_medication" cols="20" rows="2" placeholder="Treatments/Medication"></textarea></td>
+                        <td><textarea class="rounded" name="remarks" cols="20" rows="2" placeholder="Remarks"></textarea></td>
                       </tr>
                     </table>
                     <input class="btn btn-primary float-center" type="submit" name="record_submit">
@@ -183,20 +183,20 @@
                       <tbody>
                           <form method="POST">
                               {% csrf_token %}
-                          <tr>
-                              <td><textarea class="rounded" name="chief_complains_update" cols="30" rows="2">{{record.chief_complains}}</textarea></td>
-                              <td><textarea class="rounded" name="action_update" cols="30" rows="2">{{record.action}}</textarea></td>
-                              <td><textarea class="rounded" name="treaments_medication_update" cols="30" rows="2">{{record.treatments_medication}}</textarea></td>
-                              <td><textarea class="rounded" name="remarks_update" cols="30" rows="2">{{record.remarks}}</textarea></td>
+                          <tr> 
+                              <td><textarea class="rounded text-break" name="chief_complains_update" cols="15" rows="2">{{record.chief_complains}}</textarea></td>
+                              <td><textarea class="rounded text-break" name="action_update" cols="15" rows="2">{{record.action}}</textarea></td>
+                              <td><textarea class="rounded text-break" name="treaments_medication_update" cols="15" rows="2">{{record.treatments_medication}}</textarea></td>
+                              <td><textarea class="rounded text-break" name="remarks_update" cols="15" rows="2">{{record.remarks}}</textarea></td>
                               <td><button class="btn btn-danger" name="record_update" value="{{record.id}}">Save</button></td>
                           </tr>
                           </form>
                       {% endif %}
                           <tr>
-                              <td>{{record.chief_complains}}</td>
-                              <td>{{record.action}}</td>
-                              <td>{{record.treatments_medication}}</td>
-                              <td>{{record.remarks}}</td>
+                              <td style="word-wrap: break-word; max-width:20px;">{{record.chief_complains}}</td>
+                              <td style="word-wrap: break-word; max-width:20px;">{{record.action}}</td>
+                              <td style="word-wrap: break-word; max-width:20px;">{{record.treatments_medication}}</td>
+                              <td style="word-wrap: break-word; max-width:20px;">{{record.remarks}}</td>
                               <td>{{record.created_at}}</td>
                               <form method="POST">
                                   {% csrf_token %}

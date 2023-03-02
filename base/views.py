@@ -1,6 +1,6 @@
-from .models import Patient, Record, Illness
+from .models import Patient, Record, Illness, Permissions
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PatientForm, RecordForm
+from .forms import PatientForm, RecordForm, PermissionsForm
 from django.urls import reverse
 from django.db.models import Q
 from django.http import HttpResponseRedirect
@@ -216,3 +216,22 @@ def patient_records(request, pk):
     context = {'p_records':p_records}
 
     return render(request, 'base/patient_records.html', context)'''
+
+
+def permissions_view(request, pk):
+    patient = get_object_or_404(Patient, id=pk)
+    patient_permission = patient.permissions.all().first()
+
+    return render(request, 'base/patient_permission.html', {'patient_permission':patient_permission, 'patient':patient})
+
+def permissions_form(request, pk):
+    patient = get_object_or_404(Patient, id=pk)
+
+    if request.method == 'POST':
+        
+        return redirect(reverse('patient-permissions', args=[patient.pk]))
+
+
+    context = {'form':form}
+
+    return render(request, 'base/patient_permission_form.html', context)
